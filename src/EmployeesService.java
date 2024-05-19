@@ -27,4 +27,19 @@ public class EmployeesService {
         }
         return totalPaidPerEmployee;
     }
+
+    /**
+     * Calcula total de salários pagos a uma lista de funcionários
+     * em determinado mês/ano.
+     *
+     */
+    public static double calculateTotalSalaries(ArrayList<AbstractEmployee> employees, int year, int month) {
+        double total = 0;
+        for (AbstractEmployee employee : employees) {
+            if (employee.getHiringYear() <= year) {
+                total += employee.getBaseSalary();
+            }
+        }
+        return total;
+    }
 }

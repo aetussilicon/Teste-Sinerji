@@ -41,5 +41,10 @@ public class Main {
         for (Map.Entry<String, Double> entry : totalPaid.entrySet()) {
             System.out.println(entry.getKey() + ": R$ " + entry.getValue());
         }
+
+        System.out.println("-----------------------");
+
+        double totalSalaries = EmployeesService.calculateTotalSalaries(employees, year, month);
+        System.out.println("Total dos salários base em Abril de 2022: R$ " + totalSalaries);
     }
 }
