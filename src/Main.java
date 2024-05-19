@@ -33,6 +33,10 @@ public class Main {
         employees.add(new Manager("Juliana Alves", 2017));
         employees.add(new Manager("Bento Albino", 2014));
 
+        ArrayList<Seller> sellers = new ArrayList<>();
+        sellers.add(new Seller("Ana Silva", 2021, anaSales));
+        sellers.add(new Seller("João Mendes", 2021, joaoSales));
+
         int year = 2022;
         int month = 4;
 
@@ -59,5 +63,12 @@ public class Main {
 
         System.out.println("-----------------------");
 
+        AbstractEmployee highestBenefitEmployee = EmployeesService.employeeWithHighestBenefit(employees, year, month);
+        System.out.println("Funcionário com o maior benefício em Abril de 2022: " + highestBenefitEmployee.getName());
+
+        System.out.println("-----------------------");
+
+        Seller highestSellingSeller = EmployeesService.sellerWithHighestSale(sellers, year, month);
+        System.out.println("Funcionário com a maior venda em Abril de 2022: " + highestSellingSeller.getName());
     }
 }

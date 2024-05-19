@@ -75,4 +75,44 @@ public class EmployeesService {
         }
         return highest;
     }
+
+    /**
+     * Retorna o funcionário com o valor mais alto de benefícios em um determinado mês/ano.
+     *
+     * Funcionários que não recebem algum benefício são ignorados
+     *
+     */
+    public static AbstractEmployee employeeWithHighestBenefit(ArrayList<AbstractEmployee> employees, int year, int month) {
+        AbstractEmployee highestBenefit = null;
+        double highestValue = 0;
+        for (AbstractEmployee employee : employees) {
+            if (employee.getRole() != "Gerente") {
+                double totalBenefits = employee.calculateBenefits(year, month);
+                if (totalBenefits > highestValue) {
+                    highestValue = totalBenefits;
+                    highestBenefit = employee;
+                }
+            }
+        }
+        return highestBenefit;
+    }
+
+    /**
+     * Retorna o vendedor que mais vendeu em determinado mês/ano.
+     */
+    public static Seller sellerWithHighestSale(ArrayList<Seller> sellers, int year, int month) {
+        Seller higherSeller = null;
+        double highestSale = 0;
+        for (Seller seller : sellers) {
+            if (seller.getHiringYear() <= year) {
+                double monthSales = seller.getTotalSalesInMonth(year, month);
+                if (monthSales > highestSale) {
+                    highestSale = monthSales;
+                    higherSeller = seller;
+                }
+            }
+        }
+        return higherSeller;
+    }
+
 }
