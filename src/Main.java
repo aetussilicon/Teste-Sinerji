@@ -46,5 +46,18 @@ public class Main {
 
         double totalSalaries = EmployeesService.calculateTotalSalaries(employees, year, month);
         System.out.println("Total dos salários base em Abril de 2022: R$ " + totalSalaries);
+
+        System.out.println("-----------------------");
+
+        double totalBenefits = EmployeesService.calculateTotalBenefits(employees, year, month);
+        System.out.println("Total dos benefícios base em Abril de 2022: R$ " + totalBenefits);
+
+        System.out.println("-----------------------");
+
+        AbstractEmployee highestPaidEmployee = EmployeesService.employeeWithHighestSalary(employees, year, month);
+        System.out.println("Funcionário com o maior recebimento em Abril de 2022: " + highestPaidEmployee.getName());
+
+        System.out.println("-----------------------");
+
     }
 }

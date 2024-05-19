@@ -42,4 +42,37 @@ public class EmployeesService {
         }
         return total;
     }
+
+    /**
+     * Calcula o total de benefícios recebidos por uma lista de funcionários
+     * em determinado mês/ano.
+     *
+     * Funcionários que não recebem algum benefício são ignorados
+     */
+    public static double calculateTotalBenefits(ArrayList<AbstractEmployee> employees, int year, int month) {
+        double total = 0;
+        for (AbstractEmployee employee : employees) {
+            if (employee.getRole() != "Gerente") {
+                total += employee.calculateBenefits(year, month);
+            }
+        }
+        return total;
+    }
+
+    /**
+     * Retorna o funcionário com maior rendimento no mês baseado em uma lista.
+     *
+     */
+    public static AbstractEmployee employeeWithHighestSalary(ArrayList<AbstractEmployee> employees, int year, int month) {
+        AbstractEmployee highest = null;
+        double highestValue = 0;
+        for (AbstractEmployee employee : employees) {
+            double totalReceived = employee.getTotal(year, month);
+            if (totalReceived > highestValue) {
+                highestValue = totalReceived;
+                highest = employee;
+            }
+        }
+        return highest;
+    }
 }
